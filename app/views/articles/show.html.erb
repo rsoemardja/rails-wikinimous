@@ -1,0 +1,17 @@
+<h1><%= @article.title %></h1>
+<p><%= @article.details %></p>
+
+<%= form_with model: @article do |f| %>
+  <% if !@article.completed %>
+      <%= f.check_box :completed %>
+      <%= f.label :completed, 'Complete this article' %><br>
+      <br>
+    <%= f.submit 'Update Article' %><br>
+    <br>
+  <% end %>
+  <%= link_to 'Back to list', tasks_path %>
+  <%= link_to "Delete",
+  task_path(@task),
+  data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+%>
+<% end %>
